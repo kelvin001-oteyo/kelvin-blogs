@@ -1,0 +1,62 @@
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+    <style>
+        .about {
+            max-width: 800px;
+            margin: 50px auto;
+            background: linear-gradient(to right, #ffffff, #f1f7ff);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .about h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #007acc;
+        }
+        .about p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <h1>Kelvin's Blog</h1>
+        <nav class="navbar" id="navbar">
+            <a href="{% url 'blog-home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+    <div class="about">
+
+       
+        <h1>👋 About Me</h1>
+        <p>Hi, I’m Kelvin Oteyo — a passionate IT student at Kisii University, Python enthusiast, JavaScript explorer, and creative graphic designer. I love building beautiful things on the web, especially with Django, HTML, CSS, and React.</p>
+        <p>When I’m not coding, you’ll find me designing logos, watching Vybz Kartel performances, or dreaming of owning a car before graduation 🚗💨.</p>
+        <p>Thanks for visiting my blog!</p>
+    </div>
+    <script>
+  function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('show');
+  }
+</script>
+    <footer style="text-align: center; margin-top: 50px; color: gray;">
+        <p>&copy; 2023 Kelvin Oteyo. All rights reserved.</p>
+    </footer>
+</body>
+</html>

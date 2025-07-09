@@ -1,0 +1,94 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+
+    <header>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <h1>Kelvin's Blog</h1>
+        <nav class="navbar" id="navbar">
+            <a href="{% url 'blog-home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+    <div class="container">
+
+        
+        <h1>{{ post.title }}</h1>
+        <p class="author">By {{ post.author }} | {{ post.created_at }}</p>
+        <div class="author">
+    By {{ post.author }} — {{ post.created_at }}<br>
+    <strong>Category:</strong> {{ post.category.name }}
+   </div>
+
+        <hr>
+        <p class="content">{{ post.content }}</p>
+        {% if post.image %}
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width:100%; margin-bottom: 20px;">
+        {% endif %}
+
+       
+
+        <hr>
+<h3>Comments 💬</h3>
+
+{% for comment in comments %}
+    <div style="margin-bottom: 20px;">
+        <strong>{{ comment.name }}</strong> ({{ comment.created_at|date:"M d, Y H:i" }})<br>
+        <p>{{ comment.body }}</p>
+    </div>
+{% empty %}
+    <p>No comments yet.</p>
+{% endfor %}
+
+<hr>
+<h3>Leave a Comment</h3>
+ <hr>
+<h3>Comments 💬</h3>
+
+<div class="comment-list">
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="comment-author">{{ comment.name }} 
+                <span class="comment-date">{{ comment.created_at|date:"M d, Y H:i" }}</span>
+            </p>
+            <p class="comment-body">{{ comment.body }}</p>
+        </div>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
+</div>
+
+<hr>
+<h3>Leave a Comment</h3>
+<form method="post" class="comment-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="submit-btn">Post Comment</button>
+</form>
+
+
+
+
+
+
+        <a href="/" class="back-link">← Back to Blog</a>
+    </div>
+   <script>
+  function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('show');
+  }
+</script>
+    <footer style="text-align: center; margin-top: 50px; color: gray;">
+        <p>&copy; 2023 Kelvin Oteyo. All rights reserved.</p>
+    </footer>
+</body>
+</html>

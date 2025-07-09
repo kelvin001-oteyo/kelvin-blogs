@@ -1,0 +1,70 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+    <style>
+        .contact {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .contact h1 {
+            color: #007acc;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <h1>Kelvin's Blog</h1>
+  <nav class="navbar" id="navbar">
+            <a href="{% url 'blog-home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+</header>
+    <div class="container">
+        <h1>Contact Me</h1>
+        <p>Hi there! I’m Kelvin Oteyo, a passionate IT student at Kisii University. If you have any questions, suggestions, or just want to say hi, feel free to reach out!</p>
+        <p>I’m always excited to connect with fellow tech enthusiasts and explore new opportunities.</p>
+
+
+    <div class="contact">
+
+        <h1>📬 Contact Me</h1>
+        <p>Got a question, suggestion, or just want to say hi?</p>
+        <p>📧 Email: <a href="mailto:oteyikelvin@gmail.com">oteyikelvin@gmail.com</a></p>
+        <p>📱 Phone: <a href="tel:+254714328866">0714328866</a></p>
+        <p>Let’s build something amazing together!</p>
+    </div>
+    <script>
+  function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('show');
+  }
+</script>
+    <footer style="text-align: center; margin-top: 50px; color: gray;">
+        <p>&copy; 2023 Kelvin Oteyo. All rights reserved.</p>
+    </footer>
+    </div>
+</body>
+</html>
